@@ -6,7 +6,7 @@
   "author": "Alex Lu",
   "license": "BSD",
   "bin": {
-    "noin": "noin.js"
+    "noin": "bin/noin.js"
   },
   "repository" : {
     "type": "git",
