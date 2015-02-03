@@ -1,6 +1,6 @@
 {
   "name": "noin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Takes inline scripts and puts them into a separate file",
   "main": "noin.js",
   "author": "Alex Lu",
