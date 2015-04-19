@@ -27,12 +27,11 @@ if (!program.args.length) {
   if (program.recurse) {
     if (isValidDir) {
       glob('**/*.html', {nodir: true, nocase: true}, function(err, files) {
-        console.log(files);
         files.forEach(function(file) {
           runNoin(file)
         });
+        console.log("All Files Complete!");
       });
-    console.log("All Files Complete!");
     } else {
       console.log("Not a Directory");
     }
