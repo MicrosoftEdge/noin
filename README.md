@@ -1,5 +1,5 @@
 # Noin
-Command line utility that moves all the inline scripts in an .html file and put them into their own .js files. It then replaces the inline scripts with script tags linking to the newly created .js files. It also goes through and removes all the inline onClick attributes and moves them into their own file.
+Command line utility that moves all the inline scripts in an .html file and put them into their own .js files. It then replaces the inline scripts with script tags linking to the newly created .js files. It also goes through and removes all inline event listeners and moves them into their own file.
 
 ## Installation
 To install, just run:
@@ -8,10 +8,19 @@ npm install -g noin
 ```
 
 ## Usage
-Currently noin only works on individual .html files:
+To use noin on an individual file simply run:
 ```bash
 noin index.html
 ```
+To use noin on an entire folder add the -r flag:
+```bash
+noin -r directory
+```
+To have noin backup the files it processes use add the -b flag:
+```bash
+noin -b index.html
+```
+
 ## Example
 Noin will take in an HTML file:
 
@@ -76,6 +85,3 @@ And rips out all the inline script and inline events and links them properly to 
 
 ## Notice
 Put together for csp testing purposes. It's pretty simple code, but was thrown together quickly and not thourougly tested. Use at your own risk.
-
-## Appendix
-A few generalized helper/utility functions taken from [Vulcanize](https://github.com/Polymer/vulcanize). [Vulcanize License](http://polymer.github.io/LICENSE.txt).
