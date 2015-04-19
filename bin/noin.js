@@ -32,6 +32,9 @@ if (!program.args.length) {
           runNoin(file)
         });
       });
+    console.log("All Files Complete!");
+    } else {
+      console.log("Not a Directory");
     }
   } else {
     runNoin(dir);
@@ -41,19 +44,20 @@ if (!program.args.length) {
 function runNoin(dir) {
   if (isValidFile(dir)) {
     var html = getContent(dir);
-    if (program.backup && program.verbose) {
-      console.log('backing up original file to ' + dir + '.old');
+    if (program.backup) {
+      if (program.verbose) {
+        console.log('backing up original file to ' + dir + '.old');
+      }
       backupOriginal(html.dir, html.content);
     }
     html.content = removeInlineEvents(html.dir, html.content);
     html.content = removeInlineScripts(html.dir, html.content);
     writeHTML(html.dir, html.content);
     if (program.verbose) {
-      console.log(dir + ' Complete!');
+      console.log(dir + ' completed!');
     }
   } else {
     console.log("Not a valid HTML file");
   }
-  console.log("Complete!");
 
 }

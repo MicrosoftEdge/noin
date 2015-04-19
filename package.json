@@ -19,6 +19,7 @@
   "dependencies": {
     "commander": "^2.6.0",
     "glob": "^5.0.5",
+    "js-beautify": "^1.5.5",
     "whacko": "^0.17.2"
   },
   "preferGlobal": true
