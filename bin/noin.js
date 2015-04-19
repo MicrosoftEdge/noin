@@ -1,9 +1,11 @@
 #! /usr/bin/env node
 
 var program = require('commander');
+var glob = require('glob');
 var ops = require('../lib/operations.js');
 
 var isValidFile = ops.isValidFile;
+var isValidDir = ops.isValidDir;
 var removeInlineScripts = ops.removeInlineScripts;
 var removeInlineEvents = ops.removeInlineEvents;
 var getContent = ops.getContent;
@@ -13,20 +15,45 @@ var backupOriginal = ops.backupOriginal;
 program
   .version('0.0.1')
   .usage('<input HTML file>')
+  .option('-r, --recurse', 'Recursively run noin on folder')
+  .option('-b, --backup', 'Create a backup')
+  .option('-v, --verbose', 'Print debug info')
   .parse(process.argv);
 
 if (!program.args.length) {
   program.help();
 } else {
   var dir = program.args[0];
+  if (program.recurse) {
+    if (isValidDir) {
+      glob('**/*.html', {nodir: true, nocase: true}, function(err, files) {
+        console.log(files);
+        files.forEach(function(file) {
+          runNoin(file)
+        });
+      });
+    }
+  } else {
+    runNoin(dir);
+  }
+}
+
+function runNoin(dir) {
   if (isValidFile(dir)) {
     var html = getContent(dir);
-    backupOriginal(html.dir, html.content);
+    if (program.backup && program.verbose) {
+      console.log('backing up original file to ' + dir + '.old');
+      backupOriginal(html.dir, html.content);
+    }
     html.content = removeInlineEvents(html.dir, html.content);
     html.content = removeInlineScripts(html.dir, html.content);
     writeHTML(html.dir, html.content);
-    console.log("Complete!");
+    if (program.verbose) {
+      console.log(dir + ' Complete!');
+    }
   } else {
     console.log("Not a valid HTML file");
   }
+  console.log("Complete!");
+
 }
