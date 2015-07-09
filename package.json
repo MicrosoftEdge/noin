@@ -8,6 +8,9 @@
   "bin": {
     "noin": "bin/noin.js"
   },
+  "scripts": {
+    "test": "mocha test"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/alxlu/noin"
@@ -22,5 +25,10 @@
     "js-beautify": "^1.5.5",
     "whacko": "^0.17.2"
   },
-  "preferGlobal": true
+  "preferGlobal": true,
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "fs-extra": "^0.21.0",
+    "mocha": "*"
+  }
 }
