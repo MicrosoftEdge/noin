@@ -12,31 +12,33 @@ var getContent = ops.getContent;
 var writeHTML = ops.writeHTML;
 var backupOriginal = ops.backupOriginal;
 
-program
-  .version('0.0.1')
-  .usage('<input HTML file>')
-  .option('-r, --recurse', 'Recursively run noin on folder')
-  .option('-b, --backup', 'Create a backup')
-  .option('-v, --verbose', 'Print debug info')
-  .parse(process.argv);
+function  main() {
+  program
+    .version('0.0.1')
+    .usage('<input HTML file>')
+    .option('-r, --recurse', 'Recursively run noin on folder')
+    .option('-b, --backup', 'Create a backup')
+    .option('-v, --verbose', 'Print debug info')
+    .parse(process.argv);
 
-if (!program.args.length) {
-  program.help();
-} else {
-  var dir = program.args[0];
-  if (program.recurse) {
-    if (isValidDir) {
-      glob('**/*.html', {nodir: true, nocase: true}, function(err, files) {
-        files.forEach(function(file) {
-          runNoin(file)
-        });
-        console.log("All Files Complete!");
-      });
-    } else {
-      console.log("Not a Directory");
-    }
+  if (!program.args.length) {
+    program.help();
   } else {
-    runNoin(dir);
+    var dir = program.args[0];
+    if (program.recurse) {
+      if (isValidDir) {
+        glob('**/*.html', {nodir: true, nocase: true}, function(err, files) {
+          files.forEach(function(file) {
+            runNoin(file)
+          });
+          console.log("All Files Complete!");
+        });
+      } else {
+        console.log("Not a Directory");
+      }
+    } else {
+      runNoin(dir);
+    }
   }
 }
 
@@ -59,4 +61,10 @@ function runNoin(dir) {
     console.log("Not a valid HTML file");
   }
 
+}
+
+if (!module.parent) {
+  main();
+} else {
+  module.exports = {runNoin: runNoin};
 }
