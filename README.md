@@ -1,4 +1,6 @@
 # Noin
+[![Build Status](https://travis-ci.org/alxlu/noin.svg?branch=master)](https://travis-ci.org/alxlu/noin)
+
 Command line utility that moves all the inline scripts in an .html file and put them into their own .js files. It then replaces the inline scripts with script tags linking to the newly created .js files. It also goes through and removes all inline event listeners and moves them into their own file.
 
 ## Installation
@@ -82,6 +84,3 @@ And rips out all the inline script and inline events and links them properly to 
 </body>
 </html>
 ```
-
-## Notice
-Put together for csp testing purposes. It's pretty simple code, but was thrown together quickly and not thourougly tested. Use at your own risk.
