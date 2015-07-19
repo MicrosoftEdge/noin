@@ -6,6 +6,7 @@ var fs = require('fs-extra');
 var glob = require('glob');
 var expect = require('chai').expect;
 var whacko = require('whacko');
+require('mocha-jshint')();
 
 describe('general', function() {
   before(function() {

@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 
+'use strict';
 var program = require('commander');
 var glob = require('glob');
 var ops = require('../lib/operations.js');
@@ -29,12 +30,12 @@ function  main() {
       if (isValidDir) {
         glob('**/*.html', {nodir: true, nocase: true}, function(err, files) {
           files.forEach(function(file) {
-            runNoin(file)
+            runNoin(file);
           });
-          console.log("All Files Complete!");
+          console.log('All Files Complete!');
         });
       } else {
-        console.log("Not a Directory");
+        console.log('Not a Directory');
       }
     } else {
       runNoin(dir);
@@ -58,7 +59,7 @@ function runNoin(dir) {
       console.log(dir + ' completed!');
     }
   } else {
-    console.log("Not a valid HTML file");
+    console.log('Not a valid HTML file');
   }
 
 }

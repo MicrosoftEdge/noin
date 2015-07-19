@@ -29,6 +29,7 @@
   "devDependencies": {
     "chai": "^3.0.0",
     "fs-extra": "^0.21.0",
-    "mocha": "*"
+    "mocha": "*",
+    "mocha-jshint": "^2.2.3"
   }
 }

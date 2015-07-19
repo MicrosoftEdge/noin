@@ -1,3 +1,4 @@
+'use strict';
 var operations = require('./lib/operations');
 var noin = require('./bin/noin');
 
@@ -8,5 +9,4 @@ module.exports = {
   removeInlineScripts: operations.removeInlineScripts,
   removeInlineEvents: operations.removeInlineEvents,
   getEventListeners: require('./lib/utils.js').getEventListeners
-
-}
+};
