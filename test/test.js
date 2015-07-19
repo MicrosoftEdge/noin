@@ -3,7 +3,6 @@
 var noin = require('../index');
 var path = require('path');
 var fs = require('fs-extra');
-var glob = require('glob');
 var expect = require('chai').expect;
 var whacko = require('whacko');
 require('mocha-jshint')();
