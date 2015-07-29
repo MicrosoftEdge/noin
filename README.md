@@ -18,10 +18,6 @@ To use noin on an entire folder add the -r flag:
 ```bash
 noin -r directory
 ```
-To have noin backup the files it processes use add the -b flag:
-```bash
-noin -b index.html
-```
 
 ## Example
 Noin will take in an HTML file:
